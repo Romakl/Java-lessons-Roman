@@ -3,6 +3,8 @@ package com.company;
 import java.util.Scanner;
 
 public class Main {
+    
+    // По задаче все хорощо
 
     public static void main(String[] args) {
         Scanner num = new Scanner(System.in);
