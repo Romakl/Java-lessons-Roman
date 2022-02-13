@@ -2,6 +2,9 @@ package com.company;
 
 import java.util.Scanner;
 
+//по тому коду что есть - все хорошо
+//нет решения с циклами while и do-while
+//нет проверки на длину имени < 2 или > 10
 public class Second_lesson {
     public static void main(String[] args) {
         Scanner num = new Scanner(System.in);
