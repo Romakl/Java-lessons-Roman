@@ -2,13 +2,10 @@ package com.company;
 
 import java.util.Scanner;
 
-//по тому коду что есть - все хорошо
-//нет решения с циклами while и do-while
-//нет проверки на длину имени < 2 или > 10
 public class Second_lesson {
     public static void main(String[] args) {
         Scanner num = new Scanner(System.in);
-        float first, second;
+        float first;
         System.out.print("First num: ");
         first = num.nextFloat();
         if (first > 100 || first < 1)
@@ -20,13 +17,45 @@ public class Second_lesson {
         else if (first >= 1)
             System.out.println("Try harder");
         String[] names = {"John", "Bob", "Mary", "Peter", "Sarah"};
+
+
         for (var i = 0; i < names.length; i++){
-            if (names[i].length()> 4) {
+            if (names[i].length()> 4)
                 System.out.println("The name " + names[i] + " is longer than 4 letters");
-            } else if (names[i].length() < 4)
+            else if (names[i].length() < 4)
                 System.out.println("The name " + names[i] + " is shorter than 4 letters");
             else if (names[i].length() == 4)
                 System.out.println("The name " + names[i] + " is 4 letters length");
         }
+        int i = 0;
+
+
+        while(i < names.length){
+            if (names[i].length()> 2)
+                continue ;
+            if (names[i].length() > 10)
+                break;
+            if (names[i].length()> 4)
+                System.out.println("The name " + names[i] + " is longer than 4 letters");
+            else if (names[i].length() < 4)
+                System.out.println("The name " + names[i] + " is shorter than 4 letters");
+            else if (names[i].length() == 4)
+                System.out.println("The name " + names[i] + " is 4 letters length");
+            i++;
+
+        }
+        do {
+            if (names[i].length()> 2)
+                continue ;
+            if (names[i].length() > 10)
+                break;
+            if (names[i].length()> 4)
+                System.out.println("The name " + names[i] + " is longer than 4 letters");
+            else if (names[i].length() < 4)
+                System.out.println("The name " + names[i] + " is shorter than 4 letters");
+            else if (names[i].length() == 4)
+                System.out.println("The name " + names[i] + " is 4 letters length");
+            i++;
+        } while(i < names.length);
     }
 }
