@@ -3,6 +3,7 @@ package com.company;
 import java.util.Arrays;
 import java.util.Scanner;
 
+//все хорошо!
 public class Third_lesson {
     public static void main(String[] args) {
         // Task 1
