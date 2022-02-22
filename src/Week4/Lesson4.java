@@ -10,9 +10,9 @@ public class Lesson4 {
         String [] tableHead = { "City", "Coffee name"};
         String[][] tableData = {
                 { "Berlin", "Latte"},
-                { "Kiev", "Cappuccino"},
+                { "Delhi", "Cappuccino"},
                 { "New York", "Americano"},
-                { "Delhi", "Espresso"},
+                { "", "Espresso"},
                 { "", "Doppio"}, //This type of coffee really exists, lol
         };
         ASCIITable.getInstance().printTable(tableHead, tableData);
@@ -22,21 +22,24 @@ public class Lesson4 {
         city = order.nextLine();
         System.out.print("What type of coffee would you like to order?: ");
         coffee = order.nextLine();
-        if (city.equals("Delhi")){
-            DehliCoffeShop c = new DehliCoffeShop();
-            c.makeCoffee(coffee);
-        }
-        else if (city.equals("Berlin")){
-            BerlinCoffeShop c = new BerlinCoffeShop();
-            c.makeCoffee(coffee);
+        switch (city) {
+            case "Delhi" -> {
+                DehliCoffeShop c = new DehliCoffeShop();
+                c.makeCoffee(coffee);
+                break;
+            }
+            case "Berlin" -> {
+                BerlinCoffeShop c = new BerlinCoffeShop();
+                c.makeCoffee(coffee);
 
-        }
-        else if (city.equals("New York")){
-            NewYorkCoffeShop c = new NewYorkCoffeShop();
-            c.makeCoffee(coffee);
-        }
-        else {
-            System.out.println("We cant understand you, contact to us later");
+                break;
+            }
+            case "New York" -> {
+                NewYorkCoffeShop c = new NewYorkCoffeShop();
+                c.makeCoffee(coffee);
+                break;
+            }
+            default -> System.out.println("We cant understand you, contact to us later");
         }
 
     }
