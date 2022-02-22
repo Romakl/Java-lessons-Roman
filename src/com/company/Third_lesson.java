@@ -35,5 +35,7 @@ public class Third_lesson {
         System.out.println("Original message is: " + caesar);
         System.out.println("Encrypted word is: " + output + " With key " + shift);
 
+
+
     }
 }
