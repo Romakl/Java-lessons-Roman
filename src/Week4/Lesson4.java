@@ -6,7 +6,19 @@ import java.util.Scanner;
 
 public class Lesson4 {
     public static void main(String[] args) {
-        //Использовал библиотеку, что бы было немного красивее)
+//Использовал библиотеку, что бы было немного красивее) 
+//Кстати, увидел классную фишку, если нажать на . в Github, то можно сразу открыть красивый браузерный кодовый редактор Vscode)
+/*
++----------+-------------+
+|   City   | Coffee name |
++----------+-------------+
+|   Berlin |       Latte |
+|    Delhi |  Cappuccino |
+| New York |   Americano |
+|          |    Espresso |
+|          |      Doppio |
++----------+-------------+
+*/
         String [] tableHead = { "City", "Coffee name"};
         String[][] tableData = {
                 { "Berlin", "Latte"},
