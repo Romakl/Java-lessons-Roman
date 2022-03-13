@@ -5,40 +5,80 @@ import com.bethecoder.ascii_table.ASCIITable;
 import java.util.Scanner;
 
 public class CoffeeShopApp {
-
     public static void main(String[] args) {
         Scanner order = new Scanner(System.in);
-        NewYork n1 = new NewYork();
-        Dehli n2 = new Dehli();
-        Berlin n3 = new Berlin();
-
-        String [] cityHead = { "City", "City code"};
-        String[][] cityData = {{ "Berlin", "1"}, { "Delhi", "2"}, { "New York", "3"}};
-        ASCIITable.getInstance().printTable(cityHead, cityData);
-        System.out.print("What type of coffee would you like to order?: ");
-        int i = order.nextInt();
-
-        if (i == 1) {
-            n1.getCoffee(n1.coffeeData);
-            System.out.print("Choose your Coffee: ");
-            i = order.nextInt();
-            n1.coffeeWait();
-            n1.makeCoffee("New York", "Coffee" );
-
-        }
-        if (i == 2) {
-            n2.getCoffee(n1.coffeeData);
-            System.out.print("Choose your Coffee: ");
-            i = order.nextInt();
-            n2.coffeeWait();
-            n2.makeCoffee("Dehli", "Coffee" );
-        }
-        if (i == 3) {
-            n3.getCoffee(n1.coffeeData);
-            System.out.print("Choose your Coffee: ");
-            i = order.nextInt();
-            n3.coffeeWait();
-            n3.makeCoffee("Berlin", "Coffee" );
+        NewYork ny = null;
+        Dehli deh = null;
+        Berlin ber = null;
+        while (true){
+            String[] cityHead = {"City", "City code"};
+            String[][] cityData = {{"New York", "1"}, {"Delhi", "2"}, {"Berlin", "3"}};
+            ASCIITable.getInstance().printTable(cityHead, cityData);
+            System.out.print("What type of coffee would you like to order?: ");
+            int city = order.nextInt();
+            if (city == 1) {
+                if (ny == null) {
+                    ny = new NewYork();
+                    ny.prepare();
+                }
+                ny.getCoffee();
+                System.out.print("Choose your Coffee: ");
+                int i = order.nextInt();
+                if (i > ny.coffeeData.length){
+                    ny.coffeeTotal();
+                    continue;
+                }
+                ny.coffeeWait();
+                if (ny instanceof Biscuits) {
+                    System.out.print("Biscuits?(1 - yes, 2 - no): ");
+                    int bis = order.nextInt();
+                    if (bis == 1) {
+                        ny.sellBiscuits();
+                    }
+                    ny.makeCoffee(i);
+                }
+            }
+            else if (city == 2) {
+                if (deh == null) {
+                    deh = new Dehli();
+                    deh.prepare();
+                }
+                deh.getCoffee();
+                System.out.print("Choose your Coffee: ");
+                int i = order.nextInt();
+                if (i > deh.coffeeData.length){
+                    deh.coffeeTotal();
+                    continue;
+                }
+                deh.coffeeWait();
+                if (deh instanceof Biscuits) {
+                    System.out.print("Biscuits?(1 - yes, 2 - no): ");
+                    int bis = order.nextInt();
+                    if (bis == 1) {
+                        deh.sellBiscuits();
+                    }
+                    deh.makeCoffee(i);
+                }
+            }
+            else if (city == 3) {
+                if (ber == null) {
+                    ber = new Berlin();
+                    ber.prepare();
+                }
+                ber.getCoffee();
+                System.out.print("Choose your Coffee: ");
+                int i = order.nextInt();
+                if (i > ber.coffeeData.length){
+                    ber.coffeeTotal();
+                    continue;
+                }
+                ber.coffeeWait();
+                ber.makeCoffee(i);
+                }
+            System.out.println("Do you want to continue?(1-yes 2-no)");
+            int i = order.nextInt();
+            if (i == 2)
+                System.exit(1);
         }
     }
 }
