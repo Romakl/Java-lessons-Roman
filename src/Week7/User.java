@@ -5,6 +5,8 @@ import java.util.List;
 
 public class User {
 
+    //если имя переменной состоит из 2 слов то принято писать их camelCase'ом
+    // в остальном все супер
     private String first_name;
     private String last_name;
     private Date birthday;
