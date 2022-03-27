@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 public class BankMenu {
     public void showStartMenu(){
         BufferedReader rd = new BufferedReader(new InputStreamReader(System.in));
+        //тут не хватает пункта меню для выхода, у тебя он вроде под номером 3
         System.out.print("Choose method:\n1 - Login\n2 - Register");
         String choice = "";
         try {
@@ -14,6 +15,8 @@ public class BankMenu {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        // не хватает какого-то вывода информации юзеру если он ввел некорректный пункт меню, можно просто через else
         if (choice.equals("1")) {
             showLogin();
         }
