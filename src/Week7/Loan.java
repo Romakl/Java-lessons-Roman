@@ -2,6 +2,7 @@ package Week7;
 import java.util.Date;
 
 public class Loan {
+    //имена переменных - с маленькой буквы
     private Date Date;
     private double sum;
     private double percent;
