@@ -3,20 +3,20 @@ package Week7;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Date;
 
 public class BankMenu {
+    private Bank bank;
     public void showStartMenu(){
         BufferedReader rd = new BufferedReader(new InputStreamReader(System.in));
-        //тут не хватает пункта меню для выхода, у тебя он вроде под номером 3
-        System.out.print("Choose method:\n1 - Login\n2 - Register");
+        System.out.print("Choose method:\n1 - Login\n2 - Register\n3 - Exit");
         String choice = "";
         try {
             choice = rd.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        // не хватает какого-то вывода информации юзеру если он ввел некорректный пункт меню, можно просто через else
+
         if (choice.equals("1")) {
             showLogin();
         }
@@ -27,8 +27,43 @@ public class BankMenu {
             System.out.println("See you later, good bye:)");
             System.exit(0);
         }
+        else  {
+            System.out.println("I cant understand you:)");
+            System.exit(0);
+        }
     }
-    private void showLogin() {}
-    private void showRegister() {}
+    private void showLogin() {
+        BufferedReader rd = new BufferedReader(new InputStreamReader(System.in));
+        String email = "";
+        String password = "";
+        boolean valid = false;
+        try {
+            System.out.println("What is your email");
+            email = rd.readLine();
+            System.out.println("What is your password");
+            password = rd.readLine();
+        } catch (IOException e) {
+            System.out.println("IOException");
+        }
+
+        valid = bank.doLogin(email, password);
+        if (valid == true) {
+            System.out.print("Good");
+        } else {
+            System.out.println("Your entered invalid values:)");
+        }
+    }
+    private void showRegister() {
+        BufferedReader rd = new BufferedReader(new InputStreamReader(System.in));
+
+        String firstName = "";
+        String lastName = "";
+        String email = "";
+        String password = "";
+        Boolean gender = Boolean.valueOf("");
+        String birthday = "";
+        User user = new User();
+        bank.doRegister(user);
+    }
     public void showBankMenu() {}
 }

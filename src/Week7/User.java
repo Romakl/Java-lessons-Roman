@@ -7,8 +7,8 @@ public class User {
 
     //если имя переменной состоит из 2 слов то принято писать их camelCase'ом
     // в остальном все супер
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
     private Date birthday;
     private boolean gender;
     private String email;
@@ -16,23 +16,24 @@ public class User {
     private List<Loan> loan;
     private List<DebitCard> card;
 
+
     @Override
     public String toString() {
-        return ("Name: " + first_name + "\nSurname: " + last_name + "\nBirth Date: " + birthday + "\nGender: " + gender +  "\nE-mail: " + email + "\nPassword: " + password + "Loans: " + loan + "\nDebit Card: " + card);
+        return ("Name: " + firstName + "\nSurname: " + lastName + "\nBirth Date: " + birthday + "\nGender: " + gender +  "\nE-mail: " + email + "\nPassword: " + password + "Loans: " + loan + "\nDebit Card: " + card);
     }
 
     public String getFirst () {
-        return first_name;
+        return firstName;
     }
     public void setFirst (String first_name) {
-        this.first_name = first_name;
+        this.firstName = first_name;
     }
 
     public String getLast () {
-        return last_name;
+        return lastName;
     }
     public void setLast (String last_name) {
-        this.last_name = last_name;
+        this.lastName = last_name;
     }
 
     public Date getBirthday () {
