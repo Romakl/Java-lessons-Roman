@@ -20,6 +20,7 @@ public class Bank {
         }
     }
 
+    //тут все отлично, только пользователь не поймет если ему в консоль высыпет весь стектрейс в последнем catch блоке
     private void deserializeUsers() {
         try (ObjectInputStream os = new ObjectInputStream(new FileInputStream(db))) {
             this.users = (ArrayList<User>) os.readObject();
@@ -32,15 +33,19 @@ public class Bank {
 
     }
 
+    //тут все верно, но немного лишнего кода
     public boolean doLogin(String email, String password) {
+        //эта переменная не нужна
         boolean valid = false;
         for (User user : users) {
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+                //тут можно сначала сделать this.user = user; а потом просто return true, тогда break не нужен будет
                 valid = true;
                 this.user = user;
                 break;
             }
         }
+        //а здесь просто return false;
         return valid;
     }
     public void doRegister(User user) {
