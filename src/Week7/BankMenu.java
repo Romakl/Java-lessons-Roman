@@ -47,16 +47,21 @@ public class BankMenu {
             System.out.println("What is your password");
             password = rd.readLine();
         } catch (IOException e) {
+            //пользователь не знает что такое "IOException", нужно написать что-то внятное
             System.out.println("IOException");
         }
 
         valid = bank.doLogin(email, password);
+        
+        //немного излишний синтаксис. можно просто if (valid)
         if (valid == true) {
             System.out.print("Good");
         } else {
             System.out.println("Your entered invalid values:)");
         }
     }
+    
+    //тут не доделал
     private void showRegister() {
         BufferedReader rd = new BufferedReader(new InputStreamReader(System.in));
 
