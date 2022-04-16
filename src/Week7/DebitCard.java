@@ -6,6 +6,10 @@ public class DebitCard {
     private String card_number;
     private Date date;
     private int cvv;
+
+    public DebitCard(Double balance, String cardNumber, String endDate, int cvv) {
+    }
+
     public String toString() {
         return ("Current Balance: " + balance + "\n Card Number: " + card_number + "\n End Date: " + date +  "\n CVV: " + cvv);
     }

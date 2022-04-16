@@ -48,4 +48,8 @@ public class Bank {
         serializeUsers(users);
     }
 
+    public void addLoan(Loan loan, User user) {
+        users.add(user);
+        serializeUsers(users);
+    }
 }

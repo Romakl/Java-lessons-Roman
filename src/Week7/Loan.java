@@ -9,6 +9,9 @@ public class Loan {
     private int term;
     private double payment;
 
+    public Loan(String date, Double sum, double interestRate, int month, int monthly) {
+    }
+
     public String toString () {
         return ("Date: " + Date + "\n Sum: " + sum + "\n Percent: " + percent + "\nTerm: " + term + "\n Payment: " + payment);
     }
