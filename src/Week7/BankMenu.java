@@ -103,6 +103,7 @@ public class BankMenu {
         System.out.print("Balance");
         Double balance = sc.nextDouble();
 
+        //здесь уже можно не ситать номер карты и CVV из консоли, у нас есть для этого новые методы, нужно их вызывать
         System.out.print("Card nuber");
         String cardNumber = sc.nextLine();
 
