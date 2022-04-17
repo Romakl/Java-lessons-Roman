@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BankMenuTest {
 
+    //логика тестов не реализована
     @org.junit.jupiter.api.Test
     void generateCardNumber() {
     }
