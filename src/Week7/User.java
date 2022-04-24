@@ -2,6 +2,7 @@ package Week7;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,9 +17,9 @@ public class User implements Serializable {
     private List<Loan> loan = new ArrayList<>();
     private List<DebitCard> card = new ArrayList<>();
     public User(String firstName, String lastName, Date birthday, boolean gender, String email, String password) {
+        this.firstName = lastName;
         this.lastName = lastName;
-        this.lastName = lastName;
-        this.birthday = birthDate;
+        this.birthday = birthday;
         this.gender = gender;
         this.email = email;
         this.password = password;
@@ -63,6 +64,14 @@ public class User implements Serializable {
     }
     public void setPassword (String password) {
         this.password = password;
+    }
+
+    public void makeLoan(Loan loan) {
+        this.loan.add(loan);
+    }
+
+    public void makeCard(DebitCard debitCard) {
+        this.card.add(debitCard);
     }
 
     public List<Loan> getLoanList () {

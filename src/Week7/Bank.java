@@ -2,26 +2,27 @@ package Week7;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class Bank {
-    private final String db = "user.db";
-
     private List<User> users;
     private User user;
-    private final String db = "Week7/user_data/user.data";
-    public void start () {
-        users = deserializeUsers();
+    private final String user_data= "src/Week7/users/db.data";
+
+    public void start() {
+        deserializeUsers();
         User admin = new User("admin", "admin",
-                new GregorianCalendar(1999, Calendar.DECEMBER, 13).getGregorianChange(), true,
-                "admin@gmail.com", "admin");
+                new Date(), true,
+                "admin@admin", "admin");
 
         users.add(admin);
         serializeUsers(users);
     }
 
     private void serializeUsers(List<User> users) {
-        try(ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(db))) {
+        try(ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(user_data))) {
             os.writeObject(users);
         } catch (IOException e) {
             System.out.println("Error.");
@@ -29,32 +30,47 @@ public class Bank {
     }
 
     //тут все отлично, только пользователь не поймет если ему в консоль высыпет весь стектрейс в последнем catch блоке
-    private void deserializeUsers() {
-        try (ObjectInputStream os = new ObjectInputStream(new FileInputStream(db))) {
-            this.users = (ArrayList<User>) os.readObject();
-        } catch (FileNotFoundException e) {
-            this.users = new ArrayList<User>();
-            serializeUsers(users);
+    private List<User> deserializeUsers() {
+        List<User> userList = new ArrayList<>();
+        try (FileInputStream fileInputStream = new FileInputStream(user_data);
+             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+
+            userList = (List<User>) objectInputStream.readObject();
+
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
+        return userList;
 
     }
 
     //тут все верно, но немного лишнего кода
     public boolean doLogin(String email, String password) {
-        //эта переменная не нужна
-        boolean valid = false;
-        for (User user : users) {
-            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-                //тут можно сначала сделать this.user = user; а потом просто return true, тогда break не нужен будет
-                valid = true;
-                this.user = user;
-                break;
+        Scanner sc = new Scanner(System.in);
+        for (User users : users) {
+            System.out.print("Your Password: ");
+            if (users.getEmail().equals(email)) {
+                String pd = sc.nextLine();
+                if (users.getPassword().equals(pd)) {
+                    user = users;
+                    return true;
+                } else {
+                    System.out.println("Wrong password or user not exists");
+                    return false;
+                }
             }
         }
-        //а здесь просто return false;
-        return valid;
+        System.out.println("User not exists");
+        return false;
+    }
+    public void addLoan(Loan loan) {
+        user.makeLoan(loan);
+        serializeUsers(users);
+    }
+
+    public void addDebitCard(DebitCard debitCard) {
+        user.makeCard(debitCard);
+        serializeUsers(users);
     }
     public void doRegister(User user) {
         users.add(user);

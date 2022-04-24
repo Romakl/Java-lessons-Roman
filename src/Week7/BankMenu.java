@@ -3,6 +3,9 @@ package Week7;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
@@ -10,6 +13,11 @@ import java.util.Scanner;
 public class BankMenu {
     private Bank bank;
     private User user;
+
+    public BankMenu(Bank bank) {
+        this.bank = bank;
+        bank.start();
+    }
 
     public void showStartMenu(){
         BufferedReader rd = new BufferedReader(new InputStreamReader(System.in));
@@ -48,7 +56,7 @@ public class BankMenu {
             password = rd.readLine();
         } catch (IOException e) {
             //пользователь не знает что такое "IOException", нужно написать что-то внятное
-            System.out.println("IOException");
+            System.out.println("Неправильный ввод");
         }
 
         valid = bank.doLogin(email, password);
@@ -64,14 +72,19 @@ public class BankMenu {
     //тут не доделал
     private void showRegister() {
         BufferedReader rd = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            String firstName = rd.readLine();
+            String lastName = rd.readLine();
+            String email = rd.readLine();
+            String password = rd.readLine();
+            boolean gender = Boolean.parseBoolean(rd.readLine());
+            Date birthday = stringToDate(rd.readLine());
+            User user = new User(firstName, lastName, birthday, gender, email, password);
+        } catch (IOException e) {
+            //пользователь не знает что такое "IOException", нужно написать что-то внятное
+            System.out.println("Неправильный ввод");
+        }
 
-        String firstName = "";
-        String lastName = "";
-        String email = "";
-        String password = "";
-        Boolean gender = Boolean.valueOf("");
-        String birthday = "";
-        User user = new User();
         bank.doRegister(user);
     }
     public void showBankMenu() {
@@ -135,6 +148,14 @@ public class BankMenu {
         Loan loan = new Loan(date, sum, interestRate, month, monthly);
         sc.close();
         bank.addLoan(loan, user);
+    }
+    private Date stringToDate(String date) {
+        try {
+            return new SimpleDateFormat("d-M-yyyy").parse(date);
+        } catch (ParseException e) {
+            System.out.println("IDK");
+            return stringToDate(date);
+        }
     }
     public void generateCardNumber(){
         Random rand = new Random();

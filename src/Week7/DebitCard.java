@@ -42,9 +42,7 @@ public class DebitCard {
                 "\n Card Number: " + card_number +
                 "\n End Date: " + date +
                 "\n CVV: " + cvv +
-                "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
-                }
-        );
+                "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
     }
 
 }
