@@ -3,18 +3,19 @@ import java.util.Date;
 
 public class Loan {
     //имена переменных - с маленькой буквы
-    private Date Date;
-    private double sum;
-    private double percent;
-    private int term;
-    private double payment;
-
-    public Loan(String date, Double sum, double interestRate, int month, int monthly) {
+    private Date registrationDate;
+    private double amount;
+    private double interestRate;
+    private int takeMonths;
+    private double monthlyPayment;
+    public Loan(Date registrationDate, double amount, double interestRate, int takeMonths, double monthlyPayment) {
+        this.registrationDate = registrationDate;
+        this.amount = amount;
+        this.interestRate = interestRate;
+        this.takeMonths = takeMonths;
+        this.monthlyPayment = monthlyPayment;
     }
 
-    public String toString () {
-        return ("Date: " + Date + "\n Sum: " + sum + "\n Percent: " + percent + "\nTerm: " + term + "\n Payment: " + payment);
-    }
     public Date getDate () {
         return Date;
     }
@@ -49,5 +50,14 @@ public class Loan {
     public void setPayment (double payment) {
         this.payment = payment;
     }
+
+    public String toString() {
+        return "_____________________________________________"  +
+                "\nRegistration date: " + registrationDate +
+                "\nLoan amount: " + amount +
+                "\nInterest rate: " + interestRate +
+                "\nCredit taken for months: " + takeMonths +
+                "\nEvery month payment: " + monthlyPayment +
+                "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
 
 }

@@ -9,11 +9,6 @@ public class DebitCard {
 
     public DebitCard(Double balance, String cardNumber, String endDate, int cvv) {
     }
-
-    public String toString() {
-        return ("Current Balance: " + balance + "\n Card Number: " + card_number + "\n End Date: " + date +  "\n CVV: " + cvv);
-    }
-
     public double getBalance () {
         return balance;
     }
@@ -41,4 +36,15 @@ public class DebitCard {
     public void setCvv (int cvv) {
         this.cvv = cvv;
     }
+    public String toString() {
+        return ("____________________________________________" +
+                "Current Balance: " + balance +
+                "\n Card Number: " + card_number +
+                "\n End Date: " + date +
+                "\n CVV: " + cvv +
+                "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"
+                }
+        );
+    }
+
 }

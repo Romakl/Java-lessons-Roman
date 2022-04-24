@@ -1,27 +1,28 @@
 package Week7;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class User {
-
-    //если имя переменной состоит из 2 слов то принято писать их camelCase'ом
-    // в остальном все супер
+public class User implements Serializable {
+    @Serial
     private String firstName;
     private String lastName;
     private Date birthday;
     private boolean gender;
     private String email;
     private String password;
-    private List<Loan> loan;
-    private List<DebitCard> card;
-
-
-    @Override
-    public String toString() {
-        return ("Name: " + firstName + "\nSurname: " + lastName + "\nBirth Date: " + birthday + "\nGender: " + gender +  "\nE-mail: " + email + "\nPassword: " + password + "Loans: " + loan + "\nDebit Card: " + card);
+    private List<Loan> loan = new ArrayList<>();
+    private List<DebitCard> card = new ArrayList<>();
+    public User(String firstName, String lastName, Date birthday, boolean gender, String email, String password) {
+        this.lastName = lastName;
+        this.lastName = lastName;
+        this.birthday = birthDate;
+        this.gender = gender;
+        this.email = email;
+        this.password = password;
     }
-
     public String getFirst () {
         return firstName;
     }
@@ -77,5 +78,18 @@ public class User {
     public void setDbtCardList (List<DebitCard> card) {
         this.card = card;
     }
-
+    @Override
+    public String toString() {
+        return "_____________________________________________\n" +
+                "New User is: " +
+                "\nFirst Name: " + firstName +
+                "\nLast name: " + lastName +
+                "\nBirthday: " + birthday +
+                "\nGender: " + gender +
+                "\nEmail: " + email +
+                "\nPassword: " + password +
+                "\nLoan: " + loan +
+                "\nCard: " + card +
+                "\n---------------------------------------------\n";
+    }
 }

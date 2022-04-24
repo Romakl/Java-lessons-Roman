@@ -9,7 +9,15 @@ public class Bank {
 
     private List<User> users;
     private User user;
+    private final String db = "Week7/user_data/user.data";
     public void start () {
+        users = deserializeUsers();
+        User admin = new User("admin", "admin",
+                new GregorianCalendar(1999, Calendar.DECEMBER, 13).getGregorianChange(), true,
+                "admin@gmail.com", "admin");
+
+        users.add(admin);
+        serializeUsers(users);
     }
 
     private void serializeUsers(List<User> users) {
